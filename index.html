@@ -18,7 +18,7 @@
     }
 
     div img:hover {
-      transform: scale(1.4);
+      transform: scale(1.1);
     }
   </style>
 </head>
@@ -54,13 +54,43 @@
       <input type="reset" value="重置内容" />
     </div>
     <div>
-      <input type="radio" name="sex" id="sex" value="man" />男
+      <input type="radio" name="sex" id="sex" value="man" disabled checked/>男
       <input type="radio" name="sex" id="sex" value="woman" />女
+    </div>
+    <div>
+      <input type="checkbox" name="favourite" disabled checked/>运动
+      <input type="checkbox" name="favourite" />打游戏
+      <input type="checkbox" name="favourite" />看书
+      <input type="checkbox" name="favourite" />听音乐
+    </div>
+  
+    <input type="button" value="按钮">
+
+    <div>
+      出生年月：
+      <select name="year" disabled>
+        <option value="2000">2000</option>
+        <option value="2001">2001</option>
+        <option value="2002">2002</option>
+        <option value="2003">2003</option>
+      </select>年
+      <select name="month">
+        <option value="1">01</option>
+        <option value="2">02</option>
+        <option value="3">03</option>
+        <option value="4">04</option>
+        <option value="5">05</option>
+        <option value="6">06</option>
+        <option value="7">07</option>
+        <option value="8">08</option>
+      </select>月
+    </div>
+    <div>个人介绍：
+      <textarea name="intro" cols="30" rows="5"></textarea>
     </div>
   </form>
   <div align="center">
     <img src="images/20160530100059753.jpg"/>
-    
   </div>
 </body>
 
