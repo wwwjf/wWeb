@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>浮动属性</title>
+    <style type="text/css">
+        .box {
+            width: 960px;
+            border: 5px #000 solid;
+            /* 方法一：父元素中添加 overflow: hidden; */
+        }
+
+        .box_l {
+            width: 480px;
+            height: 240px;
+            background: #f00;
+            float: left;
+        }
+
+        .box_c,
+        .box_r {
+            width: 240px;
+            height: 240px;
+            background: #f00;
+            float: left;
+        }
+
+        .box_c {
+            background: #f1f1f1;
+        }
+
+        .box_r {
+            background: #fbfbfb url(images/2016.jpg) no-repeat right bottom;
+        }
+
+        /* 方法二：浮动元素后设置空div 样式 */
+        .clean {
+            clear: both;
+            width: 0;
+            height: 0;
+            overflow: hidden;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="box">
+        <div class="box_l"></div>
+        <div class="box_c"></div>
+        <div class="box_r"></div>
+        <div class="clean"></div>
+    </div>
+</body>
+
+</html>
