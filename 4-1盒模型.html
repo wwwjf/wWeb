@@ -7,18 +7,62 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <style type="text/css">
-        .box {
-            width: 600px;
-            height: 300px;
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .box1 {
+            width: 100px;
+            height: 100px;
             background: #f00;
             border: 10px #0f0 solid;
             border-bottom: 5px #00f solid;
+            margin-bottom: 100px;
+        }
+
+        .box2 {
+            width: 200px;
+            height: 200px;
+            background: #0ff;
+            margin-top: 200px;
+        }
+
+        h1 {
+            width: 500px;
+            height: 200px;
+            background: #ff0;
+            /* 元素内容水平居中 */
+            text-align: center;
+            /* 元素内容垂直居中 */
+            line-height: 200px;
+            /* 元素水平居中 */
+            /* margin: 0 auto; */
+        }
+
+        .box3 {
+            width: 200px;
+            height: 200px;
+            background: #f0f;
+            overflow: hidden;
+        }
+        .box4{
+            width: 100px;
+            height: 100px;
+            margin-top: 20px;
+            background: #233;
         }
     </style>
 </head>
+
 <body>
 
-    <div class="box"></div>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <h1> 盒子模型</h1>
+    <div class="box3">
+        <div class="box4"></div>
+    </div>
 </body>
 
 </html>
