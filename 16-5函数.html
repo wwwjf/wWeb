@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>函数</title>
+    <script type="text/javascript">
+        // 判断是否是闰年
+        function leapYear(year) {
+            if (year % 400 == 0 || year % 4 == 0 && year % 100 != 0) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+        // alert(leapYear(2017))
+
+        //求和
+        function sum(n) {
+            if (n == 1) {
+                return 1;
+            }
+            return n + sum(n - 1);
+        }
+        // alert(sum(100))
+
+        //找到控件
+        /* var btn = document.getElementById('btn')
+        alert(btn) */
+        window.onload = function () {
+            var btn = document.getElementById('btn')
+            var txt = document.getElementById('txt')
+            var txt2 = document.getElementById('txt2')
+            btn.onclick = function () {
+                
+                txt2.value = jiecheng(txt.value)
+            }
+        }
+        function jiecheng(num){
+            if(num==1){
+                return 1
+            }
+            return jiecheng(num-1)*num
+        }
+    </script>
+</head>
+
+<body>
+
+    <input type="text" value="" id="txt">
+    的
+    <input type="button" value="阶乘" id="btn">
+    <input type="text" value="" id="txt2">
+</body>
+
+</html>
