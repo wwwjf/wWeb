@@ -8,8 +8,65 @@
     <title>数组</title>
     <script type="text/javascript">
         var arr = Array(1, true, "hello")
-        alert(arr[1])
-        document.write('数组长度：'+arr.length)
+        // alert(arr[1])
+        document.write("<br>length:" + arr.length + ",值：" + arr)
+        //栈操作 push/pop
+        arr.push("3333") //向数组末尾添加一个元素
+        document.write("<br> push:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1])
+        var last = arr.pop() //移除数组末尾最后一个元素
+        document.write("<br> pop:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1] + ",last:" + last)
+
+        //队列操作  push/shift
+        document.write("<br> push 44444前:" + arr)
+        arr.push("44444")
+        document.write("<br> push 44444后:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1])
+        document.write("<br> shift 前:" + arr)
+        arr.shift();
+        var first = arr[0]
+        document.write("<br> shift 后:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1] + ",first:" + first)
+
+        document.write("<br> push 55555前:" + arr)
+        arr.push("55555")
+        document.write("<br> push 55555后:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1] + ",first:" + first)
+        document.write("<br> unshift 前:" + arr)
+        arr.unshift('66666')
+        var first = arr[0]
+        document.write("<br> unshift后:" + arr)
+        document.write("<br>length:" + arr.length + ",值：" + arr[arr.length - 1] + ",first:" + first)
+
+        //数组合并 concat(array)
+        var arr1 = [1, 2, 3, 4, 5, 6]
+        var arr2 = new Array('h', 'e', 'l', 'l', 'o')
+        var arr3 = arr1.concat(arr2)
+        document.write('<br>arr1:' + arr1)
+        document.write('<br>arr2:' + arr2)
+        document.write('<br>arr3:' + arr3)
+
+        //子数组 slice(start,end)
+        var arr4 = arr1.slice(0, 3)
+        document.write('<br>arr4:' + arr4)
+
+        //splice  splice(start,length,元素...) 删除、插入元素
+        //返回值：截取掉的元素、组成的数组
+        var arr5 = arr1.splice(1, 2) //删除第2个数开始的两个个元素
+        document.write('<br>arr5=' + arr5 + ',arr1=' + arr1)
+
+        var arr6 = arr1.splice(0, 0, 10, 20) //在第1个位置插入两个元素10、20
+        document.write('<br>arr6=' + arr6 + ',arr1=' + arr1)
+
+        var arr7 = arr1.splice(0, 2, '100')//在第一个位置开始替换两个元素
+        document.write('<br>arr7=' + arr7 + ',arr1=' + arr1)
+
+        //join join() 拼接符
+        //返回值：拼接好的字符串
+        var arr8 = arr1.join('sss')
+        document.write('<br>arr8=' + arr8 + ',arr1=' + arr1)
+
     </script>
 </head>
 

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>二维数组</title>
+    <script type="text/javascript">
+        //输出1-25 5x5二维数组，左下角数字
+        var arr1 = []
+        var num = 0;
+        for (i = 0; i < 5; i++) {
+            var arr2 = []
+            for (j = 0; j < 5; j++) {
+                num++
+                if (j > i) {
+                    continue
+                }
+                arr2.push(num)
+            }
+            arr1.push(arr2)
+        }
+
+        for (k = 0; k < arr1.length; k++) {
+            document.write(arr1[k] + "<br>")
+        }
+
+        //数组排序
+
+        //reverse() 反转排序
+        var arr3 = [1, 2, 3, 4, 5]
+        var arr33 = arr3.reverse()
+        document.write('<br> arr33=' + arr33)
+
+        //sort() 默认按照ascii字符排序
+        var arr333 = arr33.sort()
+        document.write('<br> arr333=' + arr333)
+        var arr4 =[1,100,2,40,200,5,500,50]
+        var arr44 = arr4.sort()
+        document.write('<br> arr44=' + arr44)//arr44=1,100,2,200,40,5,50,500
+
+
+    </script>
+</head>
+
+<body>
+
+</body>
+
+</html>
