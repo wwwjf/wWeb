@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>定时器</title>
+    <script type="text/javascript">
+        var count = 0;
+        var isCount = 0;
+
+        function showIntervalTime() {
+
+            console.log(count++ + ",iscount:" + isCount + "<br>")
+        }
+        
+        window.onload = function () {
+            var timeBtn = document.getElementById('time')
+            if (Boolean(isCount)) {
+                timeBtn.value = "停止计时";
+            } else {
+                timeBtn.value = "开始计时";
+            }
+
+
+            timeBtn.onclick = function () {
+                console.log('===isCount:' + isCount)
+                if (Boolean(isCount)) {
+                    console.log('1===isCount:' + isCount)
+                    clearInterval(isCount)
+                    isCount = 0;
+
+                } else {
+                    console.log('2===isCount:' + isCount);
+                    isCount = setInterval(showIntervalTime, 1000);
+                }
+                console.log('===isCount:' + isCount)
+                if (Boolean(isCount)) {
+                    timeBtn.value = "停止计时";
+                } else {
+                    timeBtn.value = "开始计时";
+                }
+            }
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="button" value="开始计时" id="time">
+</body>
+
+</html>
