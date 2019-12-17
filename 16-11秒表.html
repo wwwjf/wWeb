@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>秒表</title>
+    <style type="text/css">
+        #div1 {
+            width: 300px;
+            height: 400px;
+            background: grey;
+            margin: 100px auto;
+            text-align: center;
+        }
+
+        #count {
+            width: 200px;
+            height: 150px;
+            line-height: 150px;
+            margin: auto;
+            font-size: 40px;
+        }
+
+        #div1 input {
+            width: 150px;
+            height: 40px;
+            background-color: yellow;
+            font-size: 25px;
+            margin-top: 20px;
+        }
+    </style>
+    <script type="text/javascript">
+        var count = 0;
+        var isCountTime = false;
+        var timer = null;
+
+        function $(id) {
+            return document.getElementById(id)
+        }
+
+        function parseNum(num) {
+            if (num < 10) {
+                return '0' + num;
+            } else {
+                return num;
+            }
+        }
+
+        function showTime(time) {
+            $('id_S').innerHTML = parseNum(time % 60);
+            $('id_M').innerHTML = parseNum(parseInt(time / 60) % 60);
+            $('id_H').innerHTML = parseNum(parseInt(time / 3600));
+        }
+
+
+        function countTime() {
+            console.log('===timer:' + timer)
+            isCountTime = true;
+            count++;
+            showTime(count);
+        }
+        window.onload = function () {
+
+            $('startBtn').onclick = function () {
+                console.log('===timer:' + timer)
+                if(isCountTime){
+                    alert("正在计时");
+                    return;
+                }
+                console.log('===timer1:' + timer)
+                timer = setInterval(countTime, 1000);
+            
+            }
+            $('stopBtn').onclick = function () {
+                if (!isCountTime) {
+                    alert("未在计时");
+                    return;
+                }
+                isCountTime = false;
+
+                clearInterval(timer);
+                count = 0;
+                showTime(count);
+            }
+            $('pauseBtn').onclick = function () {
+                if (!isCountTime) {
+                    alert("未在计时");
+                    return;
+                }
+                clearInterval(timer)
+            }
+        }
+        window.addEventListener('visibilitychange', (e) => console.log('========'+document.visibilityState+',count='+count));
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+
+        <div id="count">
+            <span id="id_H">00</span>:
+            <span id="id_M">00</span>:
+            <span id="id_S">00</span>
+        </div>
+
+        <input type="button" value="开始" id="startBtn" />
+        <input type="button" value="停止" id="stopBtn" />
+        <input type="button" value="暂停" id="pauseBtn" />
+    </div>
+
+</body>
+
+</html>
