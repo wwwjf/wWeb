@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>子窗口</title>
+    <style type="text/css">
+        body {
+            background: yellow;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            var openBtn = document.getElementById("obtn")
+            openBtn.onclick = function () {
+                // open('16-12BOM_OPEN.html', 'bom子窗口', 'width=400,height=400,top=200,left=200');
+            console.log(opener)
+                window.opener.document.write("11111");
+                // window.parent.document.write("12311");
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="按钮" id="obtn" />
+</body>
+
+</html>

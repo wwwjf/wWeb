@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>History</title>
+    <script type="text/javascript">
+        // history.length 历史记录的条数
+        function funcHistory() {
+            alert('历史记录条数：' + history.length)
+        }
+
+        function funcForward() {
+            history.forward()
+        }
+
+        function funcBack() {
+            history.back();
+        }
+
+        //history.go(num)
+        // num:
+        // 0- 重载当前的页面 
+        // 正数- 前进对应数量的记录 
+        // 负数- 后退对应数量的记录 
+        function funcGo() {
+            history.go(2)
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="历史记录" onclick="funcHistory()">
+    <input type="button" value="前进" onclick="funcForward()">
+    <input type="button" value="后退" onclick="funcBack()">
+    <input type="button" value='go' onclick="funcGo()">
+</body>
+
+</html>

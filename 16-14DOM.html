@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM</title>
+    <style type="text/css">
+    /* 元素节点 */
+    /* 属性节点 */
+    /* 文本节点 */
+    </style>
+    <script type="text/javascript">
+        //元素节点
+        //属性节点
+        //文本节点
+        window.onload = function(){
+            var btn = document.getElementById('btn')
+            alert(btn.value)
+            alert(btn.type)
+            alert(btn.className)
+            alert(btn.tagName)
+            alert(btn.innerHTML)
+            var oDiv = document.getElementById('div')
+            alert(oDiv.innerText)
+        }
+    </script>
+</head>
+<body>
+    <input type="button" value="按钮文本" id="btn">
+    <div id="div">
+        <em>文本div的内容</em>
+    </div>
+</body>
+</html>

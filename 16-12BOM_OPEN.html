@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>BOM</title>
+    <style text="text/css">
+        body {
+            background-color: burlywood;
+        }
+    </style>
+    <script type="text/javascript">
+        //1、打开新窗口，加载URL
+        // open('http://www.baidu.com',"baidu")
+        //2、窗口的名称或者窗口的目标
+        // open('http://www.baidu.com')
+        //3、一串具有特殊意义的字符串
+        // open('http://www.baidu.com',"baidu","width=400,height=400,top=200,left=200")
+
+        window.onload = function () {
+            var openBtn = document.getElementById("openBtn")
+            openBtn.onclick = function () {
+                var w = open('16-12BOM_OPEN_sub.html', 'bom子窗口', 'width=400,height=400,top=200,left=200');
+                alert(w.opener)
+                // w.opener.document.write('通过子窗口对象操作该window')
+            }
+        }
+
+        function openWin() {
+            myWindow = window.open('16-12BOM_OPEN_sub.html', '123', 'width=200,height=100');
+            myWindow.document.write("<p>这是我的窗口</p>");
+            myWindow.focus();
+            myWindow.opener.document.write("<p>这个是源窗口!</p>");
+        }
+    </script>
+</head>
+
+<body>
+    <input type="button" value="打开子窗口" id ='openBtn' />
+</body>
+
+</html>

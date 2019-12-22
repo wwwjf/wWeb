@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>location属性</title>
+    <script>
+        //1、location 属性
+        // url 统一资源定位符 
+        // protocol(协议):host(主机名):port(端口号)/pathname(路径名)?search(查询字符串)#hash(锚点)
+        console.log(window.location == window.document.location);
+        //锚点
+        // alert(location.hash)
+        window.onload = function () {
+            location.hash = "#100"
+            location.search = 'name=wjf&age=1'
+        }
+        //host ip:端口号
+        //href 整个url
+        console.log('href:' + location.href)
+        // pathname 路径名
+        console.log('pathname:' + location.pathname)
+        // protocol 协议  http: file:
+        console.log('protocol:' + location.protocol)
+        // search 查询字符串  跟在？后面的部分
+        console.log('search:' + location.search)
+
+        //2、location 方法
+        //assign() 跳转到指定的URL
+        function funcAssign() {
+            location.assign("http://www.baidu.com");
+        }
+        //reload() 重载当前的URL
+        // 如果传参，参数为true的时候，强制加载，从服务器源头重新加载
+        function funcReload() {
+            // location.reload()
+            location.reload(true)
+        }
+
+        //用新的URL替换当前页面，可以避免产生跳转前的历史记录
+        function funcReplace() {
+            location.replace("http://www.baidu.com")
+        }
+    </script>
+
+</head>
+
+<body>
+    <input type="button" value="按钮assign" onclick="funcAssign()">
+    <input type="button" value="按钮reload" onclick="funcReload()">
+    <input type="button" value="按钮replace" onclick="funcReplace()">
+</body>
+
+</html>
