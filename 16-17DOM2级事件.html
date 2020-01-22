@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>DOM2级事件</title>
+    <style type="text/css">
+        #inner {
+            position: relative;
+            width: 200px;
+            height: 200px;
+            background: red;
+        }
+
+        #outer{
+            width: 300px;
+            height: 300px;
+            background: blue;
+        }
+    </style>
+    <script>
+    // 添加事件监听器：addEventListener(事件名，处理函数，布尔值)
+    // 移除事件监听器：removeEventListener(事件名，处理函数)
+    // IE下的事件监听器：attachEvent(事件名，处理函数)
+    // detachEvent(事件名，处理函数)
+    // 事件名：不带on 如：onclick 只需写click 
+    // 布尔值：false-默认，冒泡阶段执行；true，捕获阶段执行
+
+    window.onload = function(){
+        var oOuter = document.getElementById("outer")
+        var oInner = document.getElementById("inner")
+        oOuter.addEventListener("click",funOuter,true)
+        // oOuter.addEventListener("click",funInner,false)
+        oInner.addEventListener("click",funInner,false)
+    }
+
+    function funOuter(){
+        console.log("outer")
+    }
+
+    function funInner(){
+        console.log("inner")
+    }
+    </script>
+
+</head>
+<body>
+    <div id="outer">
+        <div id="inner">
+
+        </div>
+    </div>
+</body>
+</html>

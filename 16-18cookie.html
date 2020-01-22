@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Cookie</title>
+</head>
+<script type="text/javascript">
+    function setCookie(name, value, day) {
+        var oDate = new Date()
+        oDate.setDate(oDate.getDate() + day)
+        document.cookie = name + "=" + value + ";expires=" + oDate
+    }
+    setCookie('name1', 'value1', 1)
+    setCookie('name2', 'value2', 1)
+    setCookie('name3', 'value3', 1)
+    console.log(document.cookie)
+
+    function getCookie(name) {
+        var str = document.cookie
+    }
+</script>
+
+<body>
+
+</body>
+
+</html>

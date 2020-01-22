@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>事件委托</title>
+    <!-- 利用事件冒泡的原理，把本应该添加到某元素的事件委托给父元素 -->
+    <style type="text/css">
+        li {
+            margin: 10px;
+            background: red;
+        }
+    </style>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var oUl = document.getElementById('id_ul')
+            var tagLi = document.getElementsByTagName('li')
+            //1、
+            // for (i = 0; i < tagLi.length; i++) {
+            //     tagLi[i].onclick = function () {
+            //         console.log(this.innerHTML)
+            //     }
+            // }
+
+            //2、事件委托
+            oUl.onclick = function (e) {
+                var evt = e || event
+                var _target = evt.target || evt.srcElement
+                if (_target.nodeName.toUpperCase() == 'LI') {
+
+                    console.log(_target.innerHTML)
+                }
+            }
+
+            for (i = 0; i < 5; i++) {
+                var newLi = document.createElement('li')
+                newLi.innerHTML = i
+                oUl.appendChild(newLi)
+            }
+
+            document.oncontextmenu = function(){
+                //阻止右键事件
+                return false;
+            }
+        }
+    </script>
+</head>
+
+<body>
+    <ul id="id_ul">
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+    </ul>
+</body>
+
+</html>

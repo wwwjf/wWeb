@@ -8,32 +8,89 @@
     <title>js事件</title>
     <style type="text/css">
         div {
+            position: relative;
             width: 200px;
             height: 200px;
             background: red;
+        }
+
+        span {
+            position: absolute;
+            bottom: 0;
         }
     </style>
     <script type="text/javascript">
         window.onload = function () {
             var div1 = document.getElementById('div1')
-            div1.onclick = function(){
-                alert(div1.innerText)
+            var span1 = document.getElementById('span1')
+            var formSubmit = document.getElementById('form_submit')
+            var txtName = document.getElementById('txt_name')
+            var btnSure = document.getElementById('btn_sure')
+            div1.onclick = function (e) {
+                var evt = e || event
+                console.log(div1.innerText)
+                console.log(evt)
+                console.log('---clientX,clientY----', evt.clientX, evt.clientY)
+                console.log('---pageX,pageY----', evt.pageX, evt.pageY)
+                console.log('---offsetX,offsetY----', evt.offsetX, evt.offsetY)
             }
-            div1.onmouseover = function(){
-                div1.style.background='blue'
+
+            div1.onmousemove = function(e){
+                var evt = e || event
+                var x = evt.clientX
+                var y = evt.clientY
+                span1.innerHTML = '('+x+','+y+')'
             }
-            div1.onmouseout = function(){
-                div1.style.background='red'
+        
+            div1.onmouseover = function (e) {
+                div1.style.background = 'blue'
+                div1.style.color = 'white'
             }
+            div1.onmouseout = function () {
+                div1.style.background = 'red'
+                div1.style.color = 'black'
+            }
+
+            formSubmit.onsubmit = function () {
+                console.log('====form submit');
+                return false; //false 不提交
+            }
+
+            //输入框获取焦点
+            txtName.onfocus = function () {
+                console.log('===onfocus')
+            }
+            //输入框失去焦点
+            txtName.onblur = function () {
+                console.log('====onblur')
+            }
+            //输入框内容发生改变,并且失去焦点
+            txtName.onchange = function () {
+                console.log('====onchange')
+            }
+            //输入框内容变化
+            txtName.oninput = function () {
+                console.log('====oninput')
+            }
+
         }
-        window.onkeydown = function(e){
-            alert('键盘事件code='+e.keyCode)
+        window.onkeydown = function (e) {
+            var evt = e||event
+            // console.log('键盘事件code=' + e.keyCode)
+        console.log(evt.altKey,evt.ctrlKey,evt.shiftKey)
         }
     </script>
 </head>
 
 <body>
-    <div id='div1'>123456</div id='div1'>
+    <div id='div1'>
+        <span id='span1'>(0,0)</span>
+    </div>
+    <br>
+    <form method="POST" id="form_submit">
+        <input type="text" id="txt_name">
+        <input type="submit" name="提交" id="btn_sure">
+    </form>
 </body>
 
 </html>
