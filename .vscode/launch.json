@@ -9,8 +9,7 @@
             "request": "launch",
             "name": "Launch Chrome against localhost",
             "url": "http://localhost:8080",
-            "webRoot": "${workspaceFolder}",
-            "file": "${workspaceFolder}/16-18cookie.html"
+            "webRoot": "${workspaceFolder}"
         }
     ]
 }

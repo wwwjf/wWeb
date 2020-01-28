@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式语法</title>
+    <script type="text/javascript">
+        // .除了换行符之外的所有单个字符
+        var reg = /g..gle/gi;
+        var reg2 = /g.gle/gi;
+        var str = "googleg---gle";
+        console.log(reg.test(str), reg2.test(str)); //true false
+        console.log(str.match(reg), str.match(reg2)); //["google"] null
+
+        //* 重复多次匹配，匹配任意次0~n
+        var reg = /g*gle/gi;
+        var str = "gle";
+        console.log(reg.test(str), str.match(reg)); //true ["gle"]
+
+        //+ 至少有一次重复
+        var reg = /g+gle/gi;
+        var str = "gle";
+        console.log(reg.test(str), str.match(reg)); //false null
+
+        //? 0或者1次匹配
+        var reg = /g?le/gi
+        var str = "ggle"
+        var str1 = "le"
+        var str2 = "ggggle"
+        console.log(reg.test(str), str.match(reg)) //true ["gle"]
+        console.log(reg.test(str1), str1.match(reg)) //true ["le"]
+        console.log(reg.test(str2), str2.match(reg)) //true ["gle"]
+
+        //[] 表示可以出现的范围 [0-9]:0到9的数字 [a-z][A-Z]
+        var reg = /[0-9]/gi
+        var str = "abc"
+        var str1 = "ab01234c"
+        console.log(reg.test(str)) //false
+        console.log(reg.test(str1), str1.match(reg)) //true (5) ["0", "1", "2", "3", "4"]
+        //\w 数字、字母、下划线 等同于[0-9a-zA-Z_]
+        //\W 非数字、非字母、非下划线
+        var reg = /\w/gi
+        var str = "abc123"
+        console.log(reg.test(str), str.match(reg)) //true (6) ["a", "b", "c", "1", "2", "3"]
+        //\d 数字 [0-9]
+        //\D 非数字
+        var reg = /\d/gi
+        var reg1 = /\d+/gi
+        var str = "abc123"
+        console.log(reg.test(str), str.match(reg))//true ["123"]
+        console.log(reg1.test(str), str.match(reg1))//true (3) ["1", "2", "3"]
+
+        //\s 匹配空格
+        var reg = /\s+/gi
+        var str = "good good    study"
+        console.log(str.replace(reg,""))//goodgoodstudy
+
+        //{m,n} 至少匹配m次，至多匹配n次
+        //{m,} 至少m次
+        //{m} 匹配m次
+        var reg = /go{3,6}gle/gi
+        var str = "gooogle"
+        var str1 = "google"
+        console.log(reg.test(str),str.match(reg))//true ["gooogle"]
+        console.log(reg.test(str1), str1.match(reg))//false null
+
+        // /^匹配开始  $/匹配结尾
+        var reg = /^g.+g$/gi
+        var str = "google"
+        var str1 = "googleg"
+        console.log(reg.test(str),str.match(reg))//false null
+        console.log(reg.test(str1), str1.match(reg))//true ["googleg"]
+
+        // | 或
+        var reg = /google|baidu|yahoo|bing/gi
+        var str = "www.baidu.com"
+        console.log(reg.test(str), str.match(reg))//true ["baidu"]
+
+        //() 分组 将内容作为一个整体进行匹配
+        var reg = /(google){2,4}/gi
+        var str = "googleaaagooglegooglebbbgoogle"
+        console.log(reg.test(str), str.match(reg))//true ["googlegoogle"]
+        console.log(str.replace(reg,""))//googleaaabbbgoogle
+        var reg = /(g.+gle){2,4}/gi
+        var str = "googleaaagooglegooglebbbgoogle"
+        console.log(reg.test(str), str.match(reg))//true ["googlegoogle"]
+        console.log(str.replace(reg,""))//googleaaabbbgoogle
+        console.log(RegExp.$1)//googlebbbgoogle
+        // $1 $2
+        var reg = /(.*)\s(.*)/
+        var str = "taobao baidu"
+        console.log(str.replace(reg,"$2 $1"))//baidu taobao
+
+        //测试：字母、数字、下划线组成的6-15位字符，且不能以数字开头
+        window.onload = function(){
+            var reg = /^[a-zA-Z_]\w{5,14}$/
+            var oInputUserName = document.getElementById('username')
+            oInputUserName.onchange = function(){
+                var value = this.value;
+                if(reg.test(value)){
+                    alert("符合要求")
+                } else{
+                    alert("不符合要求，请重新输入")
+                    oInputUserName.value = ""
+                }
+
+            }
+        }
+    </script>
+</head>
+
+<body>
+
+    <div>
+        用户名：<input type="text" id="username" />（字母、数字、下划线组成的6-15位字符，且不能以数字开头）
+    </div>
+</body>
+
+</html>

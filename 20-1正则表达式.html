@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>正则表达式</title>
+    <script type="text/javascript">
+    //1、字面量方式
+    var reg = /abc/;
+    //2、构造函数
+    var reg2 = new RegExp("abc");
+
+    //1、test() 正则表达式方法 用来检测字符串中是否含有符合规则的子串，true-有，false-没有
+    var str = "abc"
+    var flag = reg.test(str)
+    console.log("flag="+flag)
+    //2、修饰符 g i;  g 全局匹配，i 忽略大小写(单个字符)
+    //match() 字符串方法 
+    var reg = /abc/g;
+    var str ="abcabc"
+    var flag = str.match(reg)
+    console.log(flag);//["abc", "abc"]
+    var reg = /abc/i
+    var str = "AbcABCABc";
+    var flag = str.match(reg);
+    console.log(flag)//["Abc", index: 0, input: "AbcABCABc", groups: undefined]
+
+    //search() 查找符合规则的的子串的位置，只返回第一个匹配的位置
+    var reg = /abc/;
+    var str = "123456abc";
+    var flag = str.search(reg)
+    console.log(flag) //6
+
+    //split() 以某某分割字符串，把字符串转换为数组
+    var reg = /good/;
+    var str="good good study!";
+    var flag = str.split(reg);
+    console.log(flag)//["", " ", " study!"]
+
+    //replace(oldStr,newStr)
+    var reg = /tmd/gi;
+    var str ="abc tmd abc tmd";
+    var flag = str.replace(reg,"*");
+    console.log(flag)//  abc * abc *
+
+    //exec() 正则表达式方法 将匹配成功的内容放到数组里，没有匹配成功返回null
+    var reg = /good/g;
+    var str = "good good study";
+    console.log(reg.exec(str))//["good", index: 0, input: "good good study", groups: undefined]
+    console.log(reg.exec(str))//["good", index: 5, input: "good good study", groups: undefined]
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

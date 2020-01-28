@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6语法</title>
+    <script type="text/javascript">
+        // 1、let的使用
+        // let 声明变量，用法类似var ,但是所声明的变量，只在let所在的代码块内有效
+        // 存在块级作用域{}
+        // 不存在声明提升
+        // 不允许重复声明（包括普通变量和函数参数）
+        let x = 10
+        console.log(x)
+        if (x > 4) {
+            var y = 20
+        }
+        console.log(y)
+
+        // if(x >5){
+        //     let b = 6
+        // } else{
+        //     let c = 7
+        // }
+        // console.log(b)//报错，Uncaught ReferenceError: b is not defined
+        // console.log(c)//不执行
+
+        // function foo(){
+        //     let c = 8
+        // }
+        // foo()
+        // console.log(c)//报错，Uncaught ReferenceError: c is not defined
+
+        //2、const 使用 不能修改变量的值
+        const a = 11
+        // a =20//报错，Uncaught TypeError: Assignment to constant variable.
+
+        // 3、解构赋值 数组、对象
+        // 数组
+        let [a1, b1, c1] = [11, 22, 33]
+        console.log(a1, b1, c1)//11,22,33
+        let [a2=11,b2]=[22]
+        console.log(a2,b2)//22 undefined
+        let b3
+        let [a3=11]=[b3]
+        console.log(a3,b3)//11 undefined
+        let [a4=11]=[22]
+        console.log(a4)//22 
+        //对象
+        let {a5,b5,c5} = {a5:11,b5:22,c5:33}
+        console.log(a5,b5,c5)//11 22 33
+        let {a6:b6} = {a6:11}
+        console.log(b6)//11
+        // console.log(a6)//报错，Uncaught ReferenceError: a6 is not defined
+        let {a7,b7=22} = {a7:11}
+        console.log(a7,b7)//11 22
+
+        //4、模板字符串
+        //ES5
+        var obj ={"name":"john","age":20}
+        var name = obj.name
+        var age = obj.age
+        console.log(name+"的年龄是："+age)//john的年龄是：20
+        //ES6
+        let obj1 = {"name1":"john","age1":20}
+        let {name1,age1} = obj1
+        console.log(`${name1}的年龄是：${age1}`)//john的年龄是：20
+
+    </script>
+
+</head>
+
+<body>
+</body>
+
+</html>
