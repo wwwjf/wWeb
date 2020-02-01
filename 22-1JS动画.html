@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS动画1</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            width: 100px;
+            height: 100px;
+            background: #1f76cc;
+            position: absolute;
+            left: 0;
+            right: 0;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+        window.onload = function () {
+            let speedx = 1
+            let speedy = 1
+            let oDiv = document.getElementById('div')
+            //移动动画
+            function move() {
+                let currentLeft = parseInt(window.getComputedStyle(oDiv).left)
+                let currentTop = parseInt(window.getComputedStyle(oDiv).top)
+                check_border_collision(oDiv)
+                let newTop = currentTop + speedy
+                let newLeft = currentLeft + speedx
+
+                oDiv.style.top = newTop + 'px'
+                oDiv.style.left = newLeft + 'px'
+            }
+
+            //边沿检测
+            function check_border_collision(e) {
+                let style = getComputedStyle(e)
+                let left = parseInt(style.left)
+                let top = parseInt(style.top)
+                let width = parseInt(style.width)
+                let height = parseInt(style.height)
+                if (left < 0) {
+                    left = 0
+                    speedx *= -1
+                }
+                if (top < 0) {
+                    top = 0
+                    speedy *= -1
+                }
+
+                if (left > innerWidth - width) {
+                    left = innerWidth - width
+                    speedx *= -1
+                }
+
+                if (top > innerHeight - height) {
+                    top = innerHeight - height
+                    speedy *= -1
+                }
+                e.style.left = left + 'px'
+                e.style.top = top + 'px'
+            }
+            setInterval(() => {
+                move()
+            }, 2)
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div">
+
+    </div>
+</body>
+
+</html>

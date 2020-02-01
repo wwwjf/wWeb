@@ -40,39 +40,99 @@
         // 3、解构赋值 数组、对象
         // 数组
         let [a1, b1, c1] = [11, 22, 33]
-        console.log(a1, b1, c1)//11,22,33
-        let [a2=11,b2]=[22]
-        console.log(a2,b2)//22 undefined
+        console.log(a1, b1, c1) //11,22,33
+        let [a2 = 11, b2] = [22]
+        console.log(a2, b2) //22 undefined
         let b3
-        let [a3=11]=[b3]
-        console.log(a3,b3)//11 undefined
-        let [a4=11]=[22]
-        console.log(a4)//22 
+        let [a3 = 11] = [b3]
+        console.log(a3, b3) //11 undefined
+        let [a4 = 11] = [22]
+        console.log(a4) //22 
         //对象
-        let {a5,b5,c5} = {a5:11,b5:22,c5:33}
-        console.log(a5,b5,c5)//11 22 33
-        let {a6:b6} = {a6:11}
-        console.log(b6)//11
+        let {
+            a5,
+            b5,
+            c5
+        } = {
+            a5: 11,
+            b5: 22,
+            c5: 33
+        }
+        console.log(a5, b5, c5) //11 22 33
+        let {
+            a6: b6
+        } = {
+            a6: 11
+        }
+        console.log(b6) //11
         // console.log(a6)//报错，Uncaught ReferenceError: a6 is not defined
-        let {a7,b7=22} = {a7:11}
-        console.log(a7,b7)//11 22
+        let {
+            a7,
+            b7 = 22
+        } = {
+            a7: 11
+        }
+        console.log(a7, b7) //11 22
 
         //4、模板字符串
         //ES5
-        var obj ={"name":"john","age":20}
+        var obj = {
+            "name": "john",
+            "age": 20
+        }
         var name = obj.name
         var age = obj.age
-        console.log(name+"的年龄是："+age)//john的年龄是：20
+        console.log(name + "的年龄是：" + age) //john的年龄是：20
         //ES6
-        let obj1 = {"name1":"john","age1":20}
-        let {name1,age1} = obj1
-        console.log(`${name1}的年龄是：${age1}`)//john的年龄是：20
+        let obj1 = {
+            "name1": "john",
+            "age1": 20
+        }
+        let {
+            name1,
+            age1
+        } = obj1
+        let obj2 = obj1
+        console.log(`${name1}的年龄是：${age1}`) //john的年龄是：20
+        console.log(`${obj2.name1}的年龄：${obj2.age1}`) //john的年龄：20
+
+        window.onload = function () {
+
+            let arr = [0, 1, 2, 3, 4]
+            let oUL = document.getElementById('ul')
+            var oLI = ""
+            for (i in arr) {
+                oLI += `<li>
+                ${arr[i]}
+                </li>`
+            }
+            oUL.innerHTML = oLI
+
+        }
+        //5、箭头函数 lambada
+        let func1 = () => 1
+        console.log(func1())//1
+        let func2 = (a) => { 
+            return a+10
+        }
+        console.log(func2(11))//21
+
+        //6、this关键字
+        console.log(this)//Window对象
+        var func3=()=>console.log(this)
+        console.log(func3())//Window对象
+
 
     </script>
 
 </head>
 
 <body>
+    <div id="div">
+        <ul id="ul">
+
+        </ul>
+    </div>
 </body>
 
 </html>

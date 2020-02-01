@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>JS动画2</title>
+    <style type="text/css">
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .div1 {
+            width: 200px;
+            height: 100px;
+            background: #1e72c5;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+
+        .div2 {
+            width: 100px;
+            height: 200px;
+            background: #c5821e;
+            position: absolute;
+            left: 200px;
+            top: 200px;
+        }
+
+        body {
+            overflow: hidden;
+        }
+    </style>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            let oDiv1 = document.getElementById('div1')
+            let oDiv2 = document.getElementById('div2')
+            oDiv1.speedx = 5
+            oDiv1.speedy = 3
+
+            oDiv2.speedx = 5
+            oDiv2.speedy = 3
+
+            //移动动画
+            function move(e) {
+
+                let style = window.getComputedStyle(e)
+                let currentLeft = parseInt(style.left)
+
+                let currentTop = parseInt(style.top)
+
+                check_border_collision(e)
+                let tempx
+                let tempy
+                if (check_block_collision(oDiv1, oDiv2)) {
+                    tempx = oDiv1.speedx
+                    tempy = oDiv1.speedy
+
+                    oDiv1.speedx = oDiv2.speedx
+                    oDiv1.speedy = oDiv2.speedy
+
+                    oDiv2.speedx = tempx
+                    oDiv2.speedy = tempy
+                }
+
+                let newLeft = currentLeft + e.speedx
+                let newTop = currentTop + e.speedy
+
+                e.style.left = newLeft + 'px'
+                e.style.top = newTop + 'px'
+            }
+
+            //边沿检测(单个元素)
+            function check_border_collision(e) {
+                let style = window.getComputedStyle(e)
+                let left = parseInt(style.left)
+                let top = parseInt(style.top)
+                let width = parseInt(style.width)
+                let height = parseInt(style.height)
+                if (left < 0) {
+                    left = 0
+                    e.speedx *= -1
+                }
+                if (top < 0) {
+                    top = 0
+                    e.speedy *= -1
+                }
+
+                if (left > innerWidth - width) {
+                    left = innerWidth - width
+                    e.speedx *= -1
+                }
+
+                if (top > innerHeight - height) {
+                    top = innerHeight - height
+                    e.speedy *= -1
+                }
+                e.style.left = left + 'px'
+                e.style.top = top + 'px'
+            }
+
+            //多个元素碰撞检测
+            function check_block_collision(element1, element2) {
+                let style1 = window.getComputedStyle(element1)
+                let style2 = window.getComputedStyle(element2)
+                let left1 = parseInt(style1.left)
+                let left2 = parseInt(style2.left)
+
+                let top1 = parseInt(style1.top)
+                let top2 = parseInt(style2.top)
+
+                let width1 = parseInt(style1.width)
+                let width2 = parseInt(style2.width)
+
+                let height1 = parseInt(style1.height)
+                let height2 = parseInt(style2.height)
+
+                let center1 = {
+                    x: left1 + width1 / 2,
+                    y: top1 + height1 / 2
+                }
+
+                let center2 = {
+                    x: left2 + width2 / 2,
+                    y: top2 + height2 / 2
+                }
+
+                let diffX = Math.abs(center1.x - center2.x)
+                let diffY = Math.abs(center1.y - center2.y)
+                if ((diffX < (width1 + width2) / 2) &&
+                    (diffY < (height1 + height2) / 2)) {
+                    return true
+                } else {
+                    return false
+                }
+
+
+            }
+            setInterval(() => {
+                move(oDiv1)
+                move(oDiv2)
+            }, 30)
+        }
+    </script>
+</head>
+
+<body>
+    <div id="div2" class="div2">
+
+    </div>
+    <div id="div1" class="div1">
+
+    </div>
+
+</body>
+
+</html>

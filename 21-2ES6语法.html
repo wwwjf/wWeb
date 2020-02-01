@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>ES6语法2</title>
+</head>
+<script type="text/javascript">
+    //1、Set
+    var set = new Set([10, 20, 30, 40, 50, 20, 30, 40, 50, 60])
+    console.log(set)//10,20,30,40,50,60 值不重复
+    //扩展运算符 ...
+    let arr = [...set]
+    console.log(arr)//数组 
+    //for of 遍历
+    for (var i of arr) {
+        console.log(i)//10,20,30,40,50,60
+    }
+    for (var i of set) {
+        console.log(i)//10,20,30,40,50,60
+    }
+    for (var i in arr) {
+        console.log(i)//0,1,2,3,4,5
+    }
+    console.log(set.has(60))//true
+    // set.clear()
+    // console.log(set, set.size)//Set(0) 0
+    for (let item of set.keys()) {
+        console.log(item)//10,20,30,40,50,60
+    }
+
+    for (let item of set.values()) {
+        console.log(item)//10,20,30,40,50,60
+    }
+    for (let [key, value] of set.entries()) {
+        console.log(key, value)//10 10
+    }
+    set.forEach((key, value) => console.log(key, value))//10 10
+
+    //2、Map
+    var map = new Map([["name", "Mike"], ["age", 19]])
+    map.set("sex", "man")
+    map.forEach((value, key) => console.log(key, value))
+
+    //3、生成器函数  function * foo(){yeild }
+    function* func(x) {
+        yield x + 1
+        yield x + 2
+        return x + 3
+    }
+
+    var f = func(3)
+    console.log(f.next(), f.next(), f.next())
+
+    function* fibo(n) {
+        let a = 0
+        let b = 1
+        for (let i = 0; i < n; i++) {
+            yield a
+            let temp = a + b
+            a = b
+            b = temp
+
+        }
+    }
+    var f = fibo(5)
+    var sum = 0
+    for (let i of f) {
+        console.log(i)
+        sum += i
+    }
+
+    console.log(`sum=${sum}`)
+
+    //4、类class
+    class Person {
+        constructor(name) {
+            this.name = name
+        }
+
+        sayHello() {
+            console.log(`hello,${this.name}`)
+        }
+    }
+
+    var person = new Person('john')
+    person.sayHello()
+
+
+</script>
+
+<body>
+
+</body>
+
+</html>
