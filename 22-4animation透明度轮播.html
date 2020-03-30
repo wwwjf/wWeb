@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>animation透明度轮播</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .slider {
+            width: 600px;
+            height: 500px;
+            border: 5px solid crimson;
+            position: relative;
+        }
+
+        .slider .list .item {
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            opacity: 0;
+        }
+
+        .slider .list .item:first-of-type {
+            opacity: 1;
+        }
+
+        .slider .list .item img {
+            width: 600px;
+            height: 500px;
+            display: block;
+        }
+
+        .slider .next,
+        .slider .pre {
+            position: absolute;
+            top: 200px;
+        }
+
+        .slider .next {
+            right: 0;
+        }
+    </style>
+    <script src="./22-3animation/animation.js"></script>
+    <script>
+        let preIndex, nextIndex;
+        let len;
+        window.onload = function () {
+            init()
+        }
+
+        function init() {
+            preIndex = nextIndex = 0;
+            len = document.getElementById('list').childElementCount
+            console.log(`---len=${len}----`)
+            document.getElementById('pre').onclick = function () {
+                slidePrev()
+            }
+            document.getElementById('next').onclick = function () {
+                slideNext()
+            }
+        }
+        function slideNext() {
+            preIndex = nextIndex
+            nextIndex++
+            if (nextIndex === len) {
+                nextIndex = 0
+            }
+            slideTo(preIndex, nextIndex);
+
+        }
+
+        function slidePrev() {
+            preIndex = nextIndex
+            nextIndex--
+            if (nextIndex === -1) {
+                nextIndex = len - 1
+            }
+            slideTo(preIndex, nextIndex)
+
+        }
+
+        function slideTo(prev, next) {
+            let lis = document.getElementById('list').children
+            // let lis = document.querySelectorAll('.list .item')
+            console.log(lis.length,prev,typeof(lis[0]))
+            animate(lis[prev], { opacity: 0 });
+            animate(lis[next], { opacity: 100 });
+        }
+    </script>
+</head>
+
+<body>
+    <div class="slider">
+        <ul id="list" class="list">
+            <li class="item">
+                <img src="./images/banner_img1.webp" alt="">
+            </li>
+            <li class="item">
+                <img src="./images/banner_img2.webp" alt="">
+            </li>
+            <li class="item">
+                <img src="./images/banner_img3.webp" alt="">
+            </li>
+            <li class="item">
+                <img src="./images/banner_img4.webp" alt="">
+            </li>
+        </ul>
+        <button id="pre" class="pre">prev</button>
+        <button id="next" class="next">next</button>
+    </div>
+</body>
+
+</html>
