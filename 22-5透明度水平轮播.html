@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{list-style: none;}
+        .slider{
+            width: 600px;
+            height: 500px;
+            position: relative;
+            /* overflow: hidden; */
+        }
+        .slider .list {
+            position: absolute;
+        }
+
+        .slider .list .item {
+            width: 600px;
+            height: 500px;
+            float: left;
+        }
+
+        .slider .list .item img {
+            width: 600px;
+            height: 500px;
+            display: block;
+        }
+
+        .slider .prev,.slider .next{
+            position: absolute;
+            top: 200px;
+        }
+        .slider .next{
+            right: 0px;
+        }
+
+        .slider .pagination .bullet {
+            width: 20px;
+            height: 20px;
+            background-color: black;
+            margin-left: 5px;
+            top: 300px;
+            z-index: 999;
+            float: left;
+            position: relative;
+        }
+
+        .focus{
+            background-color: yellow !important;
+        }
+    </style>
+    <script>
+        let currenIndex;
+        let liWidth;
+        let len;
+        window.onload = function(){
+            init()
+        }
+
+        function init(){
+            currenIndex = 1;
+            let ul_img = document.getElementById("ul_img")
+            len = ul_img.childElementCount
+            let li_1 = ul_img.firstElementChild
+            let li_1_copy = li_1.cloneNode(true)
+            let li_last = ul_img.lastElementChild
+            let li_last_copy = li_last.cloneNode(true)
+
+            ul_img.appendChild(li_1_copy)//放到最后一个
+            ul_img.insertBefore(li_last_copy,li_1)//放到第一个前面
+
+            len = ul_img.childElementCount
+            liWidth = li_1.offsetWidth
+            console.log(`len=${len},liwidth=${liWidth}`)
+            ul_img.style.width = liWidth *len +"px"
+            
+
+
+        }
+    </script>
+</head>
+<body>
+    <!-- div.slider>ul.list>(li.item>img[src="./images/banner_img$.webp"])*4 -->
+    <div class="slider">
+        <ul id="ul_img" class="list">
+            <li class="item"><img src="./images/banner_img1.webp" alt=""></li>
+            <li class="item"><img src="./images/banner_img2.webp" alt=""></li>
+            <li class="item"><img src="./images/banner_img3.webp" alt=""></li>
+            <li class="item"><img src="./images/banner_img4.webp" alt=""></li>
+        </ul>
+        <button class="prev">prev</button>
+        <button class="next">next</button>
+        <ul class="pagination">
+            <li class="bullet focus"></li>
+            <li class="bullet"></li>
+            <li class="bullet"></li>
+            <li class="bullet"></li>
+        </ul>
+    </div>
+</body>
+</html>
