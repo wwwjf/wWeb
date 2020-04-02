@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script>
+        window.onload = function(){
+            var date = new Date(-2208974400000);
+            var timestamp = Date.parse('1900-01-01 12:00:00')
+            var timestamp2 = Date.parse('2000-01-01 12:00:00')
+            var date1 = new Date(timestamp2)
+            var date2 = new Date(timestamp);
+            var time = date.getTime();
+            var time2 = date2.getTime();
+
+            var year = date2.getFullYear()
+            var month = date2.getMonth()
+            var day = date2.getDay()
+            var hour = date2.getHours()
+            var minutes = date2.getMinutes()
+            var seconds = date2.getSeconds()
+
+            var utcyear = date2.getUTCFullYear()
+            var utcmonth = date2.getUTCMonth()
+            var utcday = date2.getUTCDay()
+            var utchour = date2.getUTCHours()
+            var utcminutes = date2.getUTCMinutes()
+            var utcseconds = date2.getUTCSeconds()
+            document.writeln(`timestamp=${timestamp}<br/>timestamp2=${timestamp2}<br/>time1=${time}<br/>time2=${time2}<br/>date=${date}<br/>date1=${date1}<br/>date2=${date2}<br/>`)
+            document.writeln(`${year}-${month}-${day} ${hour}:${minutes}:${seconds}<br/>`)
+            document.writeln(`${utcyear}-${utcmonth}-${utcday} ${utchour}:${utcminutes}:${utcseconds}<br/>`)
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
