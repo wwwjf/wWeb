@@ -14,7 +14,7 @@
             width: 600px;
             height: 500px;
             position: relative;
-            /* overflow: hidden; */
+            overflow: hidden;
         }
         .slider .list {
             position: absolute;
@@ -55,17 +55,20 @@
             background-color: yellow !important;
         }
     </style>
+    <script src="./22-3animation/animation.js"></script>
     <script>
         let currenIndex;
         let liWidth;
         let len;
+        let ul_img;
         window.onload = function(){
             init()
+            
         }
 
         function init(){
             currenIndex = 1;
-            let ul_img = document.getElementById("ul_img")
+            ul_img = document.getElementById("ul_img")
             len = ul_img.childElementCount
             let li_1 = ul_img.firstElementChild
             let li_1_copy = li_1.cloneNode(true)
@@ -79,8 +82,42 @@
             liWidth = li_1.offsetWidth
             console.log(`len=${len},liwidth=${liWidth}`)
             ul_img.style.width = liWidth *len +"px"
-            
 
+            ul_img.style.left = -liWidth +"px"
+
+            document.getElementById('prev').onclick = function () {
+                slidePrev()
+            }
+            document.getElementById('next').onclick = function () {
+                slideNext()
+            }
+        }
+
+        function slideNext(){
+            currenIndex++;
+            slideTo(currenIndex)
+        }
+
+        function slidePrev(){
+            currenIndex--;
+            slideTo(currenIndex)
+        }
+
+        function slideTo(index){
+            if(index === len){
+                currenIndex = index =2
+                ul_img.style.left = -liWidth+"px"
+            }
+
+            if(index === -1){
+                currenIndex = index = len-3
+                ul_img.style.left = (len-2)*liWidth +"px"
+            }
+
+            let left = -index *liWidth
+            animate(ul_img,{
+                left:left
+            })
 
         }
     </script>
@@ -94,8 +131,8 @@
             <li class="item"><img src="./images/banner_img3.webp" alt=""></li>
             <li class="item"><img src="./images/banner_img4.webp" alt=""></li>
         </ul>
-        <button class="prev">prev</button>
-        <button class="next">next</button>
+        <button id="prev" class="prev">prev</button>
+        <button id="next" class="next">next</button>
         <ul class="pagination">
             <li class="bullet focus"></li>
             <li class="bullet"></li>
