@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script>
+        // https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=30972,1459,31125,21082,31186,31228,30823,26350,31163,31196&wd=qianfen&req=2&bs=%E9%92%B1%E6%9E%AB&pbs=%E9%92%B1%E6%9E%AB&csor=7&pwd=qianfe&cb=jQuery1102026640036777882314_1586146232271&_=1586146232289
+        function getData(data){
+            console.log(`${data}`)
+            var script = document.querySelector('#jsonp_bd');
+            script.parentNode.removeChild(script);
+            $('ul').html('');
+            console.log(data,data.g)
+            if(data.g){   
+            for(var i=0;i<data.g.length;i++){
+                $(`<li>${data.g[i].q}</li>`).appendTo('ul');
+            }
+        }
+        }
+        function getList(wd){
+            var script = document.createElement('script');
+            script.id='jsonp_bd';
+            script.src='https://www.baidu.com/sugrec?pre=1&p=3&ie=utf-8&json=1&prod=pc&from=pc_web&sugsid=30972,1459,31125,21082,31186,31228,30823,26350,31163,31196&req=2&bs=%E9%92%B1%E6%9E%AB&pbs=%E9%92%B1%E6%9E%AB&csor=7&pwd=qianfe&cb=getData&wd='+wd;
+            document.body.appendChild(script);
+        }
+        window.onload = function(){
+
+            $('input').keyup(function (){
+                var wd = $(this).val();
+                getList(wd);
+            })
+        }
+    </script>
+</head>
+<body>
+    <input type="text">
+    <ul></ul>
+</body>
+</html>

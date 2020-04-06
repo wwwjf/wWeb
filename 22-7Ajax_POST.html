@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax-POST请求</title>
+    <script>
+        window.onload = function(){
+            //1.创建xhr对象
+            var xhr = new XMLHttpRequest();
+            //5.监听数据返回
+            xhr.onreadystatechange = function(){
+                if(xhr.readyState !== 4){
+                    return;
+                }
+                if(xhr.status>=200 &xhr.status <=300){
+                    console.log("请求成功")
+                    var response = JSON.parse(xhr.responseText)
+                    if(response.result){
+                        console.log("登陆成功")
+                    } else{
+                        console.log("登录失败")
+                    }
+                } else{
+                    console.log("请求失败")
+                }
+            }
+            //2.配置这个对象
+            xhr.open('POST','index.html',true)
+            //3.设定请求头，指明body中的数据是什么格式
+            xhr.setRequestHeader('content-type','application/x-www-form-urlencoded')
+            //4.发送数据，
+            xhr.send('user=admin&password=123456')
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

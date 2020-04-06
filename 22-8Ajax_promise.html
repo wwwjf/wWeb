@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax_Promise</title>
+    <script>
+        //通过promise这个构造函数，来创建一个对象
+        //这个promise对象，有三种状态pending、fulfill、reject状态
+        //promise构造函数，有一个参数，这个参数是一个回调，这个回调接收两个参数，
+        //这两个参数都能够改变promise对象的状态
+        //第一个参数，可以将状态从pending==>fulfill,
+        //第二个参数，可以将状态从pending==>reject
+        var promise = new Promise(function(resolve,reject){
+            setTimeout(() => {
+                var num = Math.floor(Math.random()*100)
+                if(num%2 === 0){
+                    resolve(num)
+                } else {
+                    reject(num)
+                }
+            }, 3000);
+        })
+
+        promise.then(function(num){
+            console.log("resolve ," + num)
+        }).catch(function(num){
+            console.log("reject，" + num)
+        })
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ajax_GET</title>
+    <script>
+        window.onload = function(){
+            
+        //1.创建Ajax对象
+        var xhr = new XMLHttpRequest()
+        //4.监听请求
+        xhr.onreadystatechange = function(){
+            //当xhr对象的readystate属性发生了改变，这个事件触发
+            //readyState：
+            //0====>xhr已经创建，但是还没有进行初始化操作
+            //1====>xhr已经调用了open
+            //2====>xhr已经发出ajax请求
+            //3====>已经返回了部分数据
+            //4====>数据已经全部返回  数据放在xhr.responseText属性中 string
+            if(xhr.readyState != 4){
+                return;
+            }
+            if(xhr.status >= 200 &&xhr.status <=300){
+                console.log("请求成功")
+                document.querySelector('body').innerHTML = xhr.responseText
+            } else{
+                console.log("请求失败")
+            }
+        }
+        //2.打开这个对象
+        xhr.open('get','./1-0index.html',true)//true-异步，false-同步
+        //3.发送请求
+        xhr.send()
+
+    }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
