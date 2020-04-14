@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery animate动画</title>
+    <style>
+        div {
+            width: 200px;
+            height: 200px;
+            background: cornflowerblue;
+        }
+    </style>
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script>
+        window.onload = function () {
+            $('button:first').click(function () {
+                // $('div').show(3000)//改变大小透明度
+                // $('div').fadeIn(3000)//改变透明度
+                // $('div').slideDown()//下拉
+                /*$('div').animate({
+                    width:500,
+                    height:600
+                })*/
+                $('div').animate({
+                    width:500
+                },5000).animate({
+                    height: 600
+                },5000)
+            });
+            $('button:eq(1)').click(function () {
+                // $('div').hide(3000)
+                // $('div').fadeOut(3000)
+                // $('div').slideUp()
+                /*$('div').animate({
+                    width:200,
+                    height:200
+                })*/
+                $('div').animate({
+                    height:200
+                },5000).animate({
+                    width: 200
+                },5000)
+            });
+
+            $('button:last').click(function () {
+                // $('div').stop()//停止当前动画，进行下一个动画
+                $('div').stop(true)//停止所有动画
+            })
+        }
+    </script>
+</head>
+<body>
+<button type="button">显示</button>
+<button type="button">隐藏</button>
+<button type="button">停止动画</button>
+<div></div>
+</body>
+</html>

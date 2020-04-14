@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>全选框</title>
+    <style type="text/css">
+        th,td{
+            width: 50px;
+            height: 30px;
+            background: deepskyblue;
+            text-align: center;
+        }
+    </style>
+    <script src="./js/jquery-3.4.1.js"></script>
+    <script>
+        window.onload = function () {
+            $('thead input').change(function () {
+                let isChecked = $(this).prop('checked');
+                $('tbody input').prop('checked',isChecked)
+            })
+
+            $('tbody input').change(function () {
+                let count = $('tbody input').length;
+                let checkedCount = $('tbody input:checked').length;
+                $('thead input').prop('checked',count ===checkedCount)
+            })
+        }
+    </script>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th><input type="checkbox"></th>
+        <th>姓名</th>
+        <th>年龄</th>
+        <th>爱好</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>黄忠</td>
+        <td>80</td>
+        <td>拆迁</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>关羽</td>
+        <td>35</td>
+        <td>骑马</td>
+    </tr>
+    <tr>
+        <td><input type="checkbox"></td>
+        <td>鲁班</td>
+        <td>3</td>
+        <td>放炮</td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -6,27 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>jQuery入门</title>
 </head>
+<style>
+    div{
+        width: 100px;
+        height: 100px;
+        cursor: pointer;
+    }
+    .play {
+        background: green;
+    }
+    .pause {
+        background: grey;
+    }
+</style>
 <script src="./js/jquery-3.4.1.js"></script>
-<script type="text/javascript">
+<script>
     window.onload = function () {
         //  $('li').html()
         // alert($('ul').html())
         $("input").keyup(function () {
-            var v = $(this).val;
+            var v = $(this).val();
             alert(v)
+        });
+        $('input[type=checkbox]').change(function () {
+            // console.log($(this).attr('checked'))
+            console.log($(this).prop('checked'))
+        });
+        $('div').click(function () {
+            $(this).toggleClass('pause');
+            $(this).toggleClass('play');
         })
     }
 </script>
 
 <body>
-    <!-- ul>(li*4>{$}) -->
-    <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
-        <li>4</li>
-    </ul>
-    <input type="text" />
+<!-- ul>(li*4>{$}) -->
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<input type="text"/>
+<label>选中<input type="checkbox" checked></label>
+
+<div class="pause"></div>
 </body>
 
 </html>
