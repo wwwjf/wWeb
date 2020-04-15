@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery遍历节点</title>
+    <script src="js/jquery-3.4.1.js"></script>
+    <script>
+        window.onload = function () {
+            $('li:eq(1)').children()
+                .css('background','green')
+                .css('color','white');
+            let $li2 = $('li:eq(2)');
+            $li2.parent().css('color','blue');
+            $li2.parents('div#container').append('<h2>新元素</h2>');
+
+            $('#container').find('p.vip')
+                .css({'background':'black','color':'red'});
+
+            $li2.prev().css('fontSize','10px');//前一个
+            $li2.next().css('fontSize','35px');//后一个
+
+            $li2.siblings().css('fontWeight','bold')//兄弟姐妹节点
+        }
+    </script>
+</head>
+<body>
+<div id="container">
+    <ul class="list">
+        <li class="item"><p>1</p></li>
+        <li class="item"><p>2</p></li>
+        <li class="item"><p class="vip">3</p></li>
+        <li class="item"><p>4</p></li>
+        <li class="item"><p>5</p></li>
+    </ul>
+
+</div>
+</body>
+</html>
