@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-ajax</title>
+</head>
+<body>
+<script src="js/jquery-3.4.1.js"></script>
+<script>
+$.ajax({
+    type:'get',
+    url:'json/person.json',
+    data:{
+        name:'guanyu'
+    },
+    success:function (resp) {
+        console.log(resp.hobby)
+    },
+    error:function (resp) {
+        console.log(resp)
+    }
+});
+//回调嵌套问题
+    $.ajax({
+        type: 'get',
+        url: 'json/person.json'
+    }).done(function (resp) {
+        console.log(`1`);
+        console.log(`${resp}`);
+        return $.ajax({type:'get',url:'json/person.json'})
+    }).done(function (resp) {
+        console.log(`2`);
+        console.log(`${resp}`);
+        return $.ajax({type:'get',url:'json/person.json'})
+    }).done(function (resp) {
+        console.log(`3`);
+        console.log(`${resp}`);
+    })
+</script>
+</body>
+</html>
