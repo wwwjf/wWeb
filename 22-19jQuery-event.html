@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>jQuery-event</title>
+<script src="js/jquery-3.4.1.js"></script>
+<script type="text/javascript">
+
+    $(function () {
+        console.log('onload--------');
+        //绑定事件
+        // $('li').on('mouseover',function () {
+        //     $(this).css('background','red')
+        // }).on('mouseout',function () {
+        //     $(this).css('background','green')
+        // });
+
+        //解绑事件
+        // $('li:eq(3)').off('mouseover');
+        //新增元素
+        // $('<li>newli</li>').appendTo('ul');
+        //事件代理
+        $('ul').on('mouseover','li',function () {
+            $(this).css('background','red')
+        }).on('mouseout','li',function () {
+            $(this).css('background','green')
+        });
+        $('<li>newli</li>').appendTo('ul');
+        var $el = $('<div><h1>新元素</h1></div>');
+        //添加到子元素最后一个
+        // $('body').append($el);
+        $el.appendTo('body');
+
+        var $newFirst = $('<li>10</li>');
+        //添加到子元素第一个位置
+        // $('ul').prepend($newFirst)
+        $newFirst.prependTo('ul');
+
+        //添加到指定元素后面
+        $('li:eq(3)').after('<li>4.5</li>');
+        $('<li>5.5</li>').insertAfter('li:eq(5)');
+
+        $('button').click(function () {
+            //删除节点元素
+            // $('li:last').remove();
+            //删除节点元素中的内容
+            $('li:last').empty()
+        })
+    });
+</script>
+</head>
+<body>
+<ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+</ul>
+<button>删除节点</button>
+</body>
+</html>
