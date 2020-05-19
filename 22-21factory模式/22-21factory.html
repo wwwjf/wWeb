@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>工厂模式</title>
+    <script src="Factory.js"></script>
+    <script src="Normal.js"></script>
+    <script src="GunCarrier.js"></script>
+    <script src="Strong.js"></script>
+    <script>
+        let normal = Factory.create('normal');
+        for(let i = 0; i<10; i++){
+            Factory.create('strong');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>
