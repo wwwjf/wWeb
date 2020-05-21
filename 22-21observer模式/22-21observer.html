@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>观察者模式</title>
+    <script src="Message.js"></script>
+    <script src="Hero.js"></script>
+    <script type="text/javascript">
+
+        window.onload = function () {
+            let msg = new Message();
+            let hz = new Hero('黄忠', msg);
+            let lb = new Hero('吕布', msg);
+            let zy = new Hero('周瑜', msg);
+            msg.attach(hz);
+            msg.attach(lb);
+            msg.attach(zy);
+            document.getElementById("btn_fb").onclick = function () {
+                msg.setState('一血');
+            };
+            document.getElementById('btn_dk').onclick = function () {
+                msg.setState('双杀');
+            }
+        }
+    </script>
+</head>
+<body>
+<div>
+    <input id="btn_fb" type="button" value="First blood">
+</div>
+<div>
+    <input type="button" value="double kill" id='btn_dk'/>
+</div>
+</body>
+</html>
