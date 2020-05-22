@@ -1,0 +1,22 @@
+*{
+  padding: 0;
+  margin: 0;
+  background: red;
+
+  div{
+    background: green;
+    width: 500px;
+    height: 500px;
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+    font: {
+      family: "微软雅黑", "Times New Roman";
+      size: 20px;
+      weight: bold;
+    };
+    color: white;
+  }
+}

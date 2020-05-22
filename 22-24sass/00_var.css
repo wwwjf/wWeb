@@ -1,0 +1,18 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0;
+  background: red; }
+  * div {
+    background: green;
+    width: 500px;
+    height: 500px;
+    font-family: "微软雅黑", "Times New Roman";
+    font-size: 20px;
+    font-weight: bold;
+    color: white; }
+    * div img {
+      width: 200px;
+      height: 200px; }
+
+/*# sourceMappingURL=00_var.css.map */

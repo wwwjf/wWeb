@@ -1,0 +1,29 @@
+@charset "UTF-8";
+* {
+  padding: 0;
+  margin: 0; }
+  * div {
+    background: green;
+    width: 500px;
+    height: 500px;
+    font-family: "微软雅黑", "Times New Roman";
+    font-size: 20px;
+    font-weight: bold;
+    color: white; }
+    * div img {
+      width: 200px;
+      height: 200px; }
+  * .soutu-btn {
+    background: #fff url(https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/searchbox/nicon-10750f3f7d.png) no-repeat;
+    width: 24px;
+    height: 20px; }
+  * .soutu-btn:hover {
+    width: 24px;
+    height: 20px;
+    background: #fff url(https://dss0.bdstatic.com/5aV1bjqh_Q23odCf/static/superman/img/searchbox/nicon-10750f3f7d.png) no-repeat 0 -24px; }
+  * .box {
+    width: 300px;
+    height: 300px;
+    position: relative; }
+
+/*# sourceMappingURL=01_importcommon.css.map */

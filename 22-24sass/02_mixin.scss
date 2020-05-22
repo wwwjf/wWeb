@@ -1,0 +1,9 @@
+@mixin font($family,$size,$weight) {
+  font-family: $family;
+  font-size: $size;
+  font-weight: $weight;
+}
+
+a {
+  @include font('微软雅黑', 30px, bold)
+}
