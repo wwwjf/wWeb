@@ -36,7 +36,7 @@
     width: 200px;
     height: 200px;
     display: none;
-    background-image: url("../images/big.jpg");
+    background-image: url("../../images/big.jpg");
     float: left;
     margin-left: 50px;
 }
